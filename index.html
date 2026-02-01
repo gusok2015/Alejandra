@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Alejandra!</title>
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            /* Soft vibrant red/pink */
+            --secondary: #feca57;
+            /* Gold/Yellow */
+            --accent: #54a0ff;
+            /* Soft Blue */
+            --background: #ff9ff3;
+            /* Light pink background */
+            --text: #2c3e50;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.4);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Pacifico&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--background), #f368e0);
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Pacifico', cursive;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            width: 100%;
+            aspect-ratio: 4/5;
+            max-height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+        }
+
+        .prev-btn {
+            left: 15px;
+        }
+
+        .next-btn {
+            right: 15px;
+        }
+
+        /* Messages Section */
+        .messages {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .message-card {
+            text-align: center;
+            transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .message-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .message-card p {
+            line-height: 1.6;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.4);
+            /* Stronger background for visibility */
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            width: 100%;
+            color: var(--text);
+            /* Darker text for readability if background is light */
+            font-weight: 700;
+            /* Bolder text */
+            font-size: 1.2rem;
+            /* Larger text */
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            font-family: 'Pacifico', cursive;
+            /* Use the fancy font for names too? Or keep readable. Let's keep readable but styled. */
+            font-family: 'Outfit', sans-serif;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <header class="hero glass-card">
+            <h1>¡Feliz Cumpleaños Alejandra!</h1>
+            <p>Hoy celebramos tu vida, tu alegría y tu amistad.</p>
+        </header>
+
+        <section class="carousel-container glass-card">
+            <button class="carousel-btn prev-btn">❮</button>
+            <div class="carousel-track">
+                <!-- Image Slide Items -->
+                <div class="carousel-slide"><img src="20250202_234331.jpg" alt="Foto con Ale"></div>
+                <div class="carousel-slide"><img src="20250303_005500.jpg" alt="Momento especial"></div>
+                <div class="carousel-slide"><img src="72280be48d2d42efaef25af1a03b0790.jpg" alt="Recuerdo"></div>
+                <div class="carousel-slide"><img src="IMG-20230720-WA0199.jpg" alt="Alejandra"></div>
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 17.04.54.jpeg" alt="Foto"></div>
+                <!-- Removed WhatsApp Image 2026-01-29 at 18.07.01.jpeg -->
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 18.07.02.jpeg" alt="Foto"></div>
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 18.09.21.jpeg" alt="Foto"></div>
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 20.43.38.jpeg" alt="Foto"></div>
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 20.44.57.jpeg" alt="Foto"></div>
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 20.45.27.jpeg" alt="Foto"></div>
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 20.47.28.jpeg" alt="Foto"></div>
+                <div class="carousel-slide"><img src="WhatsApp Image 2026-01-29 at 21.13.22.jpeg" alt="Foto"></div>
+            </div>
+            <button class="carousel-btn next-btn">❯</button>
+        </section>
+
+        <section class="messages">
+            <div class="message-card">
+                <h3>🎉 ¡Felicitaciones!</h3>
+                <p>Que este nuevo año de vida te traiga infinitas alegrías, salud y sueños cumplidos. ¡Te mereces lo
+                    mejor!</p>
+            </div>
+            <div class="message-card">
+                <h3>💖 Amistad</h3>
+                <p>Gracias por ser una persona tan especial. Tu amistad es un regalo para todos los que te rodean.</p>
+            </div>
+            <div class="message-card">
+                <h3>✨ Con mucho Cariño</h3>
+                <p>Disfruta tu día al máximo. ¡Que la pases increíble rodeada de mucho amor y felicidad!</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Te desean con todo cariño: Alesita, Graciela, Andrea, Ricardo y Carolina.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carousel Logic
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.next-btn');
+            const prevButton = document.querySelector('.prev-btn');
+            let currentIndex = 0;
+
+            const updateSlidePosition = () => {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            };
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlidePosition();
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlidePosition();
+            });
+
+            // Auto-advance
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlidePosition();
+            }, 4000);
+
+            // Confetti Logic
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const confettiParticles = [];
+            const colors = ['#ff6b6b', '#feca57', '#54a0ff', '#ff9ff3', '#ffffff'];
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height - canvas.height;
+                    this.size = Math.random() * 8 + 5;
+                    this.speedY = Math.random() * 3 + 2;
+                    this.speedX = Math.random() * 2 - 1;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.rotation = Math.random() * 360;
+                    this.rotationSpeed = Math.random() * 5 - 2.5;
+                }
+
+                update() {
+                    this.y += this.speedY;
+                    this.x += this.speedX;
+                    this.rotation += this.rotationSpeed;
+
+                    if (this.y > canvas.height) {
+                        this.y = -10;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation * Math.PI / 180);
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(0, 0, this.size, this.size);
+                    ctx.restore();
+                }
+            }
+
+            const initConfetti = () => {
+                for (let i = 0; i < 100; i++) {
+                    confettiParticles.push(new Particle());
+                }
+            };
+
+            const animateConfetti = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                confettiParticles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animateConfetti);
+            };
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            initConfetti();
+            animateConfetti();
+        });
+    </script>
+</body>
+
+</html>
